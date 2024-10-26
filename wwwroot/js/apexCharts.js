@@ -27,6 +27,7 @@ function drawChart() {
 }
 
 function emptyChart() {
+    // Function to display an empty chart with no data
     chartInstance = null;
     var options = {
         chart: {
@@ -63,6 +64,7 @@ function emptyChart() {
 }
 
 function generateChartWithRandomData() {
+    // Function to update existing charts with randomly generated data
     const data = getRandomData(9, 0, 200);
     chartInstance.updateSeries([{ name: 'Sales', data: data }]);
     chartInstance.updateOptions({
