@@ -1,0 +1,27 @@
+﻿@page "/chartWithNoData"
+@attribute [StreamRendering]
+@inject IJSRuntime JS
+
+<PageTitle>Chart With No Data</PageTitle>
+<h3>Using ApexCharts Library</h3>
+
+<button @onclick="ButtonClicked">Random Data</button>
+<div id="chart1"></div>
+
+
+
+@code {
+    public async Task ButtonClicked()
+    {
+        await JS.InvokeVoidAsync("generateChartWithRandomData");
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Call the JavaScript function only after the component is fully rendered
+            await JS.InvokeVoidAsync("emptyChart");
+        }
+    }
+}
